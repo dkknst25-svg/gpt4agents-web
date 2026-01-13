@@ -216,6 +216,7 @@ a {
   display: inline-block;
   align-self: center;
   margin-top: auto;
+  color: #111111;
 }
 
 .price-card.dark {
@@ -224,13 +225,6 @@ a {
 
 .price-card.dark ul {
   color: #333333;
-}
-
-.price-card.dark a,
-.price-card.blue a {
-  background: #ffffff;
-  color: #1f1f1f;
-  border: none;
 }
 
 .price-card.blue {
@@ -289,6 +283,13 @@ a {
 
 .support h2 {
   font-size: 20px;
+}
+
+.support .primary-btn {
+  padding: 6px 14px;
+  border: 1px solid #ffffff;
+  background: transparent;
+  color: #ffffff;
 }
 
 .site-footer {
