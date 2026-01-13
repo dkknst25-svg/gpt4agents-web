@@ -266,6 +266,19 @@ a {
   font-size: 11px;
 }
 
+.doc-frame {
+  margin-top: 24px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e1e1e1;
+}
+
+.doc-frame iframe {
+  width: 100%;
+  min-height: 520px;
+  border: none;
+}
+
 .support {
   background: linear-gradient(120deg, #2a3347, #151922);
   color: #ffffff;
