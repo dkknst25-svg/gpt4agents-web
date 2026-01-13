@@ -1,0 +1,24 @@
+name: Deploy site to Yandex Object Storage
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Upload site to Object Storage
+        uses: NekitCorp/yandex-storage-website-action@v1
+        with:
+          access_key_id: ${{ secrets.YC_ACCESS_KEY_ID }}
+          secret_access_key: ${{ secrets.YC_SECRET_ACCESS_KEY }}
+          bucket: ${{ secrets.YC_BUCKET }}
+          endpoint: https://storage.yandexcloud.net
+          src: "./"
+          delete: true
