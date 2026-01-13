@@ -16,9 +16,8 @@ jobs:
       - name: Upload site to Object Storage
         uses: NekitCorp/yandex-storage-website-action@v1
         with:
-          access_key_id: ${{ secrets.YC_ACCESS_KEY_ID }}
-          secret_access_key: ${{ secrets.YC_SECRET_ACCESS_KEY }}
+          accessKeyId: ${{ secrets.YC_ACCESS_KEY_ID }}
+          secretAccessKey: ${{ secrets.YC_SECRET_ACCESS_KEY }}
           bucket: ${{ secrets.YC_BUCKET }}
-          endpoint: https://storage.yandexcloud.net
-          src: "./"
-          delete: true
+          path: "./"
+          clear: true
