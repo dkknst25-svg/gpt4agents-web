@@ -1,23 +1,30 @@
-name: Deploy site to Yandex Object Storage
+name: Deploy to Yandex Object Storage
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Upload site to Object Storage
-        uses: NekitCorp/yandex-storage-website-action@v1
-        with:
-          accessKeyId: ${{ secrets.YC_ACCESS_KEY_ID }}
-          secretAccessKey: ${{ secrets.YC_SECRET_ACCESS_KEY }}
-          bucket: ${{ secrets.YC_BUCKET }}
-          path: "./"
-          clear: true
+      - name: Install AWS CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y awscli
+
+      - name: Sync site to Yandex Object Storage
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.YC_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.YC_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: ru-central1
+          BUCKET: ${{ secrets.YC_BUCKET }}
+        run: |
+          aws --endpoint-url=https://storage.yandexcloud.net s3 sync . s3://$BUCKET \
+            --delete \
+            --exclude ".git/*" \
+            --exclude ".github/*" \
+            --exclude ".idea/*"
