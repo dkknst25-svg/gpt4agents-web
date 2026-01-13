@@ -173,31 +173,37 @@ a {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  align-items: stretch;
 }
 
 .price-card {
-  border: 1px solid #e5e5e5;
-  border-radius: 14px;
-  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
   background: #ffffff;
-  text-align: left;
+  text-align: center;
 }
 
-.price-card h3 {
-  font-size: 16px;
-  margin-bottom: 6px;
+.price-head {
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  padding: 26px 20px;
+  display: grid;
+  gap: 14px;
+  min-height: 140px;
+  align-content: center;
 }
 
 .price-card .price {
   font-weight: 600;
-  margin-bottom: 12px;
 }
 
 .price-card ul {
   list-style: none;
-  margin-bottom: 16px;
   color: #777777;
   font-size: 13px;
+  display: grid;
+  gap: 12px;
 }
 
 .price-card a {
@@ -208,16 +214,16 @@ a {
   font-size: 13px;
   cursor: pointer;
   display: inline-block;
+  align-self: center;
+  margin-top: auto;
 }
 
 .price-card.dark {
-  background: #2b324b;
-  color: #ffffff;
-  border: none;
+  color: #2b324b;
 }
 
 .price-card.dark ul {
-  color: rgba(255, 255, 255, 0.75);
+  color: #333333;
 }
 
 .price-card.dark a,
@@ -228,6 +234,16 @@ a {
 }
 
 .price-card.blue {
+  color: #2f8fd7;
+}
+
+.price-card.dark .price-head {
+  background: #2b324b;
+  color: #ffffff;
+  border: none;
+}
+
+.price-card.blue .price-head {
   background: #2f8fd7;
   color: #ffffff;
   border: none;
